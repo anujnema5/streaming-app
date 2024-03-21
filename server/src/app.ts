@@ -10,7 +10,14 @@ initializeMiddlewares(app);
 //     res.status(400).json({error: err})
 // })
 
-app.use(cors())
+app.use(cors({
+    origin: "*",
+    methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
+    credentials: true,
+    optionsSuccessStatus: 200,
+    allowedHeaders: "*"
+  }));
+  
 app.enable("trust proxy");
 app.use(routes)
 

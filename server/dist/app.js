@@ -12,7 +12,13 @@ const app = (0, express_1.default)();
 // app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 //     res.status(400).json({error: err})
 // })
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)({
+    origin: "*",
+    methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
+    credentials: true,
+    optionsSuccessStatus: 200,
+    allowedHeaders: "*"
+}));
 app.enable("trust proxy");
 app.use(routes_1.default);
 exports.default = app;
