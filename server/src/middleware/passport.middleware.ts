@@ -8,8 +8,8 @@ const createGoogleStrategy = () => {
     return new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID as string,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-        callbackURL: `/api/user/google/callback`, // Adjust the callback URL based on your routes
-        passReqToCallback: true
+        callbackURL: `/api/user/google/callback`, 
+        passReqToCallback: true,
     },
 
     async (req: any, accessToken: any, refreshToken: any, params: any, profile: any, done: any) => {

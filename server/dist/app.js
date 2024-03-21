@@ -11,5 +11,6 @@ const app = (0, express_1.default)();
 // app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 //     res.status(400).json({error: err})
 // })
+app.enable("trust proxy");
 app.use(routes_1.default);
 exports.default = app;

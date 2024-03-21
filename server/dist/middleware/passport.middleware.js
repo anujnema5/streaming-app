@@ -19,8 +19,8 @@ const createGoogleStrategy = () => {
     return new passport_google_oauth20_1.Strategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: `/api/user/google/callback`, // Adjust the callback URL based on your routes
-        passReqToCallback: true
+        callbackURL: `/api/user/google/callback`,
+        passReqToCallback: true,
     }, (req, accessToken, refreshToken, params, profile, done) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const { id, displayName, name, emails, photos, provider } = profile;

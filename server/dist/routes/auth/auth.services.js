@@ -23,6 +23,7 @@ const handleResponse_1 = require("../../utils/handleResponse");
 const ApiError_1 = require("../../utils/ApiError");
 const db_utils_1 = require("../../services/utils/db.utils");
 const ApiResponse_1 = require("../../utils/ApiResponse");
+require("dotenv/config");
 const googleCallback = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, handleResponse_1.tryCatchResponse)(res, () => __awaiter(void 0, void 0, void 0, function* () {
         var _a, _b;
@@ -32,7 +33,7 @@ const googleCallback = (req, res) => __awaiter(void 0, void 0, void 0, function*
         return res.status(200)
             .cookie("accessToken", accessToken, cookie_option_1.options)
             .cookie("refreshToken", refreshToken, cookie_option_1.options)
-            .redirect(`http://localhost:3000/google/callback/?token=${accessToken}`);
+            .redirect(`${process.env.BASE_SERVER_URL}/google/callback/?token=${accessToken}`);
     }));
 });
 exports.googleCallback = googleCallback;

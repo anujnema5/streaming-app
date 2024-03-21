@@ -8,6 +8,7 @@ initializeMiddlewares(app);
 // app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 //     res.status(400).json({error: err})
 // })
+app.enable("trust proxy");
 app.use(routes)
 
 export default app;
