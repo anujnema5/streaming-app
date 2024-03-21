@@ -10,14 +10,10 @@ import { RootState } from '@/store/store'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-const page = () => {
+const page: React.FC = () => {
     const user = getUser();
     const { myVideo, userVideo } = useSocket()
     const { call, callAccepted, callEnded, remoteStream } = useSelector((state: RootState) => state.meeting)
-
-    useEffect(()=> {
-        
-    },[])
 
     return (
         <>
