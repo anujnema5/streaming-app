@@ -7,7 +7,6 @@ import { RootState } from '@/store/store'
 import peer from '@/services/peer'
 // import { setIncomingCallFalse, setStreams } from '@/features/meeting/meetingSlice'
 import { useSocket } from '@/context/SocketProviders'
-import { useMeetingEvents } from '@/hooks/MeetingEvents'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Input } from '../ui/input'
 import { setRemoteId } from '@/features/meeting/meetingSlice'

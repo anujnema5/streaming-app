@@ -2,15 +2,13 @@
 import ChatBox from '@/components/meeting/ChatBox'
 import Media from '@/components/meeting/Media'
 import MeetingNav from '@/components/meeting/MeetingNav'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { useSocket } from '@/context/SocketProviders'
 import { getUser } from '@/features/userSlice'
 import { RootState } from '@/store/store'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-const page: React.FC = () => {
+const Page: React.FC = () => {
     const user = getUser();
     const { myVideo, userVideo } = useSocket()
     const { call, callAccepted, callEnded, remoteStream } = useSelector((state: RootState) => state.meeting)
@@ -23,7 +21,7 @@ const page: React.FC = () => {
                     <div className='w-[80%] relative h-full bg-secondary rounded-3xl flex justify-center items-center'>
                         <div className="absolute top-5 left-7 px-5 py-2 rounded-full bg-white/10 backdrop-blur-xl flex items-center gap-3">
                             {callAccepted && remoteStream && <span className='you-stream-dot rounded-full bg-gray-100'></span>}
-                            <span>{call.name && callAccepted ? call.name : "Remote user"}</span>
+                            <span>{call?.name && callAccepted ? call.name : "Remote user"}</span>
                         </div>
 
                         {callAccepted && !callEnded ?
@@ -54,4 +52,4 @@ const page: React.FC = () => {
     )
 }
 
-export default page
+export default Page

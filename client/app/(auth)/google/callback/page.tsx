@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '@/features/userSlice';
 import 'dotenv/config';
-import { useRefreshTokenMutation } from '@/features/authApiSlice';
+// import { useRefreshTokenMutation } from '@/features/authApiSlice';
 
 const GoogleCallback = () => {
     const dispatch = useDispatch();
