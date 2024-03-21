@@ -6,11 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const routes_1 = __importDefault(require("./routes/routes"));
 const app_middleware_1 = __importDefault(require("./middleware/app.middleware"));
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 (0, app_middleware_1.default)(app);
 // app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 //     res.status(400).json({error: err})
 // })
+app.use((0, cors_1.default)());
 app.enable("trust proxy");
 app.use(routes_1.default);
 exports.default = app;
