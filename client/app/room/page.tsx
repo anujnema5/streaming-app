@@ -7,13 +7,17 @@ import { Input } from '@/components/ui/input'
 import { useSocket } from '@/context/SocketProviders'
 import { getUser } from '@/features/userSlice'
 import { RootState } from '@/store/store'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 const page = () => {
     const user = getUser();
     const { myVideo, userVideo } = useSocket()
     const { call, callAccepted, callEnded, remoteStream } = useSelector((state: RootState) => state.meeting)
+
+    useEffect(()=> {
+        
+    },[])
 
     return (
         <>
