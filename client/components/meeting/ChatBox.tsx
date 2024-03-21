@@ -64,7 +64,8 @@ const ChatBox = () => {
 
                             : !messages.length && callAccepted ?
                                 <div className='w-full h-full flex justify-center items-center'>
-                                    <span className='font-semibold bg-primary/80 py-1.5 px-5 rounded-3xl text-zinc-200'>Let's Start a chat</span>
+                                    {/* <span className='font-semibold bg-primary/80 py-1.5 px-5 rounded-3xl text-zinc-200'>Let's Start a chat</span> */}
+                                    <span className='font-semibold bg-primary/80 py-1.5 px-5 rounded-3xl text-zinc-200'>Let&apos;s Start a chat</span>
                                 </div> : ""
                         }
                     </div>

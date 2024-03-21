@@ -9,16 +9,18 @@ import { useMeetingEvents } from '@/hooks/MeetingEvents'
 import peer from '@/services/peer'
 import { RootState } from '@/store/store'
 import { PaperPlaneIcon } from '@radix-ui/react-icons'
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactPlayer from 'react-player'
 import { useDispatch, useSelector } from 'react-redux'
 
 const page = () => {
     const user = getUser();
-
-    // useMeetingEvents();
     const dispatch = useDispatch();
     const {myVideo} = useSocket()
+
+    useEffect(() => {
+        // Add any side effects or initialization code here
+    }, []);
 
     return (
         <>
@@ -31,7 +33,7 @@ const page = () => {
                         </div>
                         <div className="">
                             <div className='flex gap-4 items-center'>
-                                <span>Remote User Connected let's start stream</span>
+                            <span>Remote User Connected let&apos;s start stream</span>
                                 <Button onClick={() => { }}>Request streaming</Button>
                             </div>
                             <h3 className='text-xl font-medium'>Waiting for user to connect ...</h3>
