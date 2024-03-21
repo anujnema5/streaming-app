@@ -1,3 +1,4 @@
+'use client'
 import { useGoogleQuery, useLoginMutation, useLogoutMutation, useSignUpMutation } from "@/features/authApiSlice";
 import { logout, setCredentials } from "@/features/userSlice";
 import { loginSchema, registerSchema } from "@/schema";
@@ -66,8 +67,6 @@ export const useLogin = () => {
                 transaction.error = "Fields are not valid"
             }
 
-            console.log('reaching here')
-
             const data = await loginUser(values).unwrap();
             console.log('reachig here 2')
 
@@ -85,6 +84,7 @@ export const useLogin = () => {
             return transaction
         }
         catch (error) {
+            console.log(error)
             const { data } = error
 
             if (data) {
