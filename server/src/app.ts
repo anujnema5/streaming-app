@@ -16,8 +16,12 @@ app.use(cors({
     credentials: true,
     optionsSuccessStatus: 200,
     allowedHeaders: "*"
-  }));
-  
+}));
+
+app.options("*", (_, res) => {
+    res.sendStatus(200);
+});
+
 app.enable("trust proxy");
 app.use(routes)
 

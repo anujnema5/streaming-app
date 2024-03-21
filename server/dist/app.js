@@ -19,6 +19,9 @@ app.use((0, cors_1.default)({
     optionsSuccessStatus: 200,
     allowedHeaders: "*"
 }));
+app.options("*", (_, res) => {
+    res.sendStatus(200);
+});
 app.enable("trust proxy");
 app.use(routes_1.default);
 exports.default = app;
