@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { useRouter } from "next/navigation";
 import { usePathname } from 'next/navigation'
+import 'dotenv/config'
 
 type TSocketContext = {
   answerCall:  ()=> any, 
@@ -24,7 +25,7 @@ const SocketProviders = ({ children }) => {
   const { me, stream, call, name, remoteSocketId, messages } = useSelector((state: RootState) => state.meeting)
   const {user} = useSelector((state: RootState)=>state.user)
   const router = useRouter()
-  const socket = useMemo(()=>io('localhost:8000'),[])
+  const socket = useMemo(()=>io(process.env.BASE_SERVER_URL),[])
   // const socket = io('localhost:8000')
   const dispatch = useDispatch();
 

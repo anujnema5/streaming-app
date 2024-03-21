@@ -10,6 +10,7 @@ import { handleResponse, tryCatchResponse } from "../../utils/handleResponse";
 import { ApiError } from "../../utils/ApiError";
 import { getUserByEmail, getUserById } from "../../services/utils/db.utils";
 import { ApiResponse } from "../../utils/ApiResponse";
+import 'dotenv/config'
 
 export const googleCallback = async (req: any, res: Response) => {
     await tryCatchResponse(res, async () => {
@@ -21,7 +22,7 @@ export const googleCallback = async (req: any, res: Response) => {
         return res.status(200)
             .cookie("accessToken", accessToken, options)
             .cookie("refreshToken", refreshToken, options)
-            .redirect(`http://localhost:3000/google/callback/?token=${accessToken}`);
+            .redirect(`${process.env.BASE_SERVER_URL}/google/callback/?token=${accessToken}`);
     })
 }
 
