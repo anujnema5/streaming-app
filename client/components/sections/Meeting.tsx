@@ -10,7 +10,6 @@ const Meeting = () => {
   const router = useRouter()
 
   const handleCreateMeeting = () => {
-    // const meetingId = genMeetingID()
     router.push(`/room/`)
   }
 

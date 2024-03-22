@@ -17,6 +17,8 @@ const initializeMiddlewares = (app: express.Application) => {
             credentials: true,
         })
     );
+    app.enable("trust proxy");
+
 };
 
 export default initializeMiddlewares;

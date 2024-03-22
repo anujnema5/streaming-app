@@ -1,11 +1,11 @@
 import { logout, setCredentials } from '@/features/userSlice'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { headers } from 'next/headers'
+import 'dotenv/config'
 
 const baseQuery = fetchBaseQuery({
     baseUrl: process.env.SERVER_URL,
     credentials: 'include',
-    mode: 'no-cors',
     prepareHeaders: (headers, {getState}: {getState: any})=> {
         const token = getState().user.token
         if(token){
