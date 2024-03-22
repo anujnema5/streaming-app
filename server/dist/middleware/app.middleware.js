@@ -23,7 +23,7 @@ const initializeMiddlewares = (app) => {
     //     }
     // }
     app.use((0, cors_1.default)({
-        origin: 'https://streaming-app-client.vercel.app',
+        origin: 'streaming-app-client.vercel.app',
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true,
     }));
