@@ -20,28 +20,34 @@ export async function middleware(request: NextRequest) {
 
   let isTokenVerified = null;
   try {
-    
-    // CLIENT SIDE VERIFICATION USING JOSE
-    isTokenVerified = await jwtVerify(accessToken, key, {
-      algorithms: ['HS256'],
-    });
 
-    if (authRoute && isTokenVerified) {
-      return NextResponse.redirect(request.nextUrl.host + '/');
+    // isTokenVerified = await jwtVerify(accessToken, key, {
+    //   algorithms: ['HS256'],
+    // });
+
+    // if (authRoute && isTokenVerified) {
+    //   return NextResponse.redirect(request.nextUrl.host + '/');
+    // }
+
+    // if (!isTokenVerified && pvtRoute) {
+    //   return NextResponse.redirect(
+    //     request.nextUrl.origin + DEFAULT_LOGIN_REDIRECT
+    //   );
+    // }
+
+    if(accessToken && refreshToken) { 
+      return NextResponse.next();
     }
 
-    if (!isTokenVerified && pvtRoute) {
-      return NextResponse.redirect(
-        request.nextUrl.origin + DEFAULT_LOGIN_REDIRECT
-      );
-    }
+
   } catch (error) {
-    if (!isTokenVerified && pvtRoute) {
-      return NextResponse.redirect(
-        request.nextUrl.origin + DEFAULT_LOGIN_REDIRECT
-      );
-    }
+    // if (!isTokenVerified && pvtRoute) {
+    //   return NextResponse.redirect(
+    //     request.nextUrl.origin + DEFAULT_LOGIN_REDIRECT
+    //   );
+    // }
   }
+
 
   return NextResponse.next();
 }
