@@ -4,8 +4,9 @@ import { headers } from 'next/headers'
 import 'dotenv/config'
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: process.env.SERVER_URL,
+    baseUrl: 'https://streaming-app-ashy.vercel.app',
     credentials: 'include',
+    mode: 'cors',
     prepareHeaders: (headers, {getState}: {getState: any})=> {
         const token = getState().user.token
         if(token){

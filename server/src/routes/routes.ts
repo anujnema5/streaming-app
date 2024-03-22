@@ -1,8 +1,9 @@
 import { Router } from "express";
 import authRoutes from "./auth/auth.controllers";
+import cors from 'cors';
 
 const routes = Router()
     .get('/', (req, res) => { return res.send("SERVER IS RUNNING") })
     .use(authRoutes)
 
-export default routes.use('/api/', routes)
+export default routes.use('/api/',  routes)
