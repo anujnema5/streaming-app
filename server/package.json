@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsc-watch --onSuccess \"node dist/index.js\" ",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "start": "tsc-watch --onSuccess \"node dist/index.js\" "
+  },
+  "prisma": {
+    "schema": "prisma/schema.prisma"
   },
   "keywords": [],
   "author": "",
