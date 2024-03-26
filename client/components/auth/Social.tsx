@@ -11,7 +11,7 @@ const Social = () => {
         <div className='flex w-full items-center gap-x-2'>
             <Button
                 onClick={() => {
-                    window.open(`${'https://streaming-app-ashy.vercel.app/api'}/user/google`, "_self");
+                    window.open(`${'http://13.201.54.89/api'}/user/google`, "_self");
                 }} size={'lg'} className='w-full' variant={'outline'}>
                 <FcGoogle />
             </Button>

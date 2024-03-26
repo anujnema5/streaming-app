@@ -4,7 +4,7 @@ import { headers } from 'next/headers'
 import 'dotenv/config'
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'https://streaming-app-ashy.vercel.app',
+    baseUrl: 'http://13.201.54.89/',
     credentials: 'include',
     mode: 'cors',
     prepareHeaders: (headers, {getState}: {getState: any})=> {

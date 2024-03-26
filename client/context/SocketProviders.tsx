@@ -25,7 +25,7 @@ const SocketProviders = ({ children }) => {
   const { me, stream, call, name, remoteSocketId, messages } = useSelector((state: RootState) => state.meeting)
   const {user} = useSelector((state: RootState)=>state.user)
   const router = useRouter()
-  const socket = useMemo(()=> io('https://streaming-app-ashy.vercel.app'),[])
+  const socket = useMemo(()=> io('http://13.201.54.89/'),[])
   // const socket = io('localhost:8000')
   const dispatch = useDispatch();
 
