@@ -4,7 +4,7 @@ import { headers } from 'next/headers'
 import 'dotenv/config'
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'http://13.201.54.89/',
+    baseUrl: 'http://65.0.91.221/',
     credentials: 'include',
     mode: 'cors',
     prepareHeaders: (headers, {getState}: {getState: any})=> {
