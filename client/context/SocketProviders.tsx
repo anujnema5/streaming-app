@@ -26,6 +26,7 @@ const SocketProviders = ({ children }) => {
   const {user} = useSelector((state: RootState)=>state.user)
   const router = useRouter()
   const socket = io('https://server.streamingapp.live')
+  console.log(socket);
   // const socket = io('localhost:8000')
   const dispatch = useDispatch();
 
