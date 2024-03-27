@@ -7,8 +7,8 @@ class SocketService {
             cors: {
                 credentials: true,
                 origin: 'https://www.streamingapp.live',
-                allowedHeaders: ['*']
-            }
+                allowedHeaders: ['*'],
+                methods: ["GET", "POST"]            }
         });
     }
 
