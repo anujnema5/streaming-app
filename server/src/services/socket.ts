@@ -6,9 +6,9 @@ class SocketService {
         this._io = new Server({
             cors: {
                 credentials: true,
-                origin: 'https://www.streamingapp.live',
+                origin: '*',
                 allowedHeaders: ['*'],
-                methods: ["GET", "POST"]            }
+            }
         });
     }
 
