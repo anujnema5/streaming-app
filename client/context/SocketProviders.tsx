@@ -25,7 +25,7 @@ const SocketProviders = ({ children }) => {
   const { me, stream, call, name, remoteSocketId, messages } = useSelector((state: RootState) => state.meeting)
   const {user} = useSelector((state: RootState)=>state.user)
   const router = useRouter()
-  const socket = useMemo(()=> io('https://server.streamingapp.live'),[])
+  const socket = io('https://server.streamingapp.live')
   // const socket = io('localhost:8000')
   const dispatch = useDispatch();
 
