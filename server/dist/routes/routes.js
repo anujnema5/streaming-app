@@ -7,5 +7,6 @@ const express_1 = require("express");
 const auth_controllers_1 = __importDefault(require("./auth/auth.controllers"));
 const routes = (0, express_1.Router)()
     .get('/', (req, res) => { return res.send("SERVER IS RUNNING"); })
+    .get('/test', (req, res) => { return res.json({ message: "Hello World Test" }); })
     .use(auth_controllers_1.default);
 exports.default = routes.use('/api/', routes);
