@@ -25,7 +25,7 @@ const SocketProviders = ({ children }) => {
   const { me, stream, call, name, remoteSocketId, messages } = useSelector((state: RootState) => state.meeting)
   const {user} = useSelector((state: RootState)=>state.user)
   const router = useRouter()
-  const socket = io('https://server.streamingapp.live')
+  const socket = useMemo(()=> io('https://server.streamingapp.live'),[])
   console.log(socket);
   // const socket = io('localhost:8000')
   const dispatch = useDispatch();
@@ -64,6 +64,10 @@ const SocketProviders = ({ children }) => {
   }
 
   return ()=> {
+    socket.off('me', (id) => {
+      dispatch(setMe(id))
+    });
+
     socket.off('callUser', ({ from, name: callerName, signal }) => {
       dispatch(setCall({ isReceivingCall: true, from, name: callerName, signal }));
       dispatch(setRemoteId(from))
@@ -73,15 +77,15 @@ const SocketProviders = ({ children }) => {
       dispatch(setMessages(message))
     })
   }
-  }, []);
+  }, [socket]);
 
 
   const callUser = (id: any) => {
     const peer = new Peer({ initiator: true, trickle: false, stream });
-    dispatch(setName(user.fullName))
+    dispatch(setName(user?.fullName))
 
     peer.on('signal', (data) => {
-      socket.emit('callUser', { userToCall: id, signalData: data, from: me, name: user.fullName });
+      socket.emit('callUser', { userToCall: id, signalData: data, from: me, name: user?.fullName });
     });
     
     peer.on('stream', (currentStream) => {
@@ -93,7 +97,6 @@ const SocketProviders = ({ children }) => {
 
     socket.on('callAccepted', ({from, signal, name}) => {
       peer.signal(signal);
-
       dispatch(setCallAcceptedToTrue())
       dispatch(setCall({isReceivingCall: true, from, name, signal}))
     });
@@ -103,10 +106,10 @@ const SocketProviders = ({ children }) => {
 
   const answerCall = () => {
     dispatch(setCallAcceptedToTrue());
-    const peer = new Peer({initiator: false, trickle: false, stream})
+    const peer = new Peer({initiator: false, trickle: false, stream })
 
     peer.on('signal', (data)=> {
-      socket.emit('answerCall', {from: me, signal:data, to:call.from, name: user.fullName})
+      socket.emit('answerCall', {from: me, signal:data, to:call.from, name: user?.fullName})
     })
 
     // JAB REMOTE SE STREAM AYEGI YE TAB YE APNE AAP TRIGGER HOGA
