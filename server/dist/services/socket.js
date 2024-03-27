@@ -6,7 +6,7 @@ class SocketService {
         this._io = new socket_io_1.Server({
             cors: {
                 credentials: true,
-                origin: 'https://streaming-app-client.vercel.app',
+                origin: 'https://www.streamingapp.live/',
                 allowedHeaders: ['*']
             }
         });

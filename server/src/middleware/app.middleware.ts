@@ -12,7 +12,7 @@ const initializeMiddlewares = (app: express.Application) => {
 
     app.use(
         cors({
-            origin: 'https://streaming-app-client.vercel.app',
+            origin: 'https://www.streamingapp.live/',
             methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
             credentials: true,
         })
