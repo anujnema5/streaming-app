@@ -22,7 +22,7 @@ export const    googleCallback = async (req: any, res: Response) => {
         return res.status(200)
             .cookie("accessToken", accessToken, options)
             .cookie("refreshToken", refreshToken, options)
-            .redirect(`${process.env.CLIENT_URL}/google/callback/?token=${accessToken}`);
+            .redirect(`http://streamingapp.live/google/callback/?token=${accessToken}`);
     })
 }
 
