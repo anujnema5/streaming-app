@@ -30,13 +30,20 @@ export async function middleware(request: NextRequest) {
     // }
 
     // if (!isTokenVerified && pvtRoute) {
+    //   console.log('I am triggering')
     //   return NextResponse.redirect(
     //     request.nextUrl.origin + DEFAULT_LOGIN_REDIRECT
     //   );
     // }
 
-    if(accessToken && refreshToken) { 
-      return NextResponse.next();
+    if (!accessToken && pvtRoute) {
+      return NextResponse.redirect(
+        request.nextUrl.origin + DEFAULT_LOGIN_REDIRECT
+      );
+    }
+
+    if(accessToken && authRoute) {
+      return NextResponse.redirect(request.nextUrl.host + '/');
     }
 
 
