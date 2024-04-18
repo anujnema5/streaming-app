@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { jwtVerify } from 'jose';
 import { DEFAULT_LOGIN_REDIRECT, authRoutes, privateRoutes } from './routes';
 
@@ -11,6 +11,7 @@ export async function middleware(request: NextRequest) {
 
   const accessToken = cookieStore.get('accessToken')?.value;
   const refreshToken = cookieStore.get('refreshToken')?.value;
+  // const user = local
 
   const authRoute = authRoutes.includes(currentURL);
   const pvtRoute = privateRoutes.includes(currentURL);
@@ -36,15 +37,18 @@ export async function middleware(request: NextRequest) {
     //   );
     // }
 
-    if (!accessToken && pvtRoute) {
-      return NextResponse.redirect(
-        request.nextUrl.origin + DEFAULT_LOGIN_REDIRECT
-      );
-    }
+    // if (!accessToken && pvtRoute) {
+    //   console.log('I am triggering');
+    //   return NextResponse.redirect(
+    //     request.nextUrl.origin + DEFAULT_LOGIN_REDIRECT
+    //   );
+    // }
 
     if(accessToken && authRoute) {
       return NextResponse.redirect(request.nextUrl.host + '/');
     }
+
+    
 
 
   } catch (error) {
